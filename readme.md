@@ -6,10 +6,6 @@ This project is a Book Management System designed with a microservice architectu
 
 ## Project structure
 ```
-## Project structure
-
-```
-```
 - `internal/`: Application code
     - `user/`: User service implementations
     - `book/`: Book service implementations
