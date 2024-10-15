@@ -98,7 +98,6 @@ func ServeRoutes(envPath string) {
 	}
 
 	redisAddr := fmt.Sprintf("%s:%s", cfg.RedisHost, cfg.RedisPort)
-	log.Infof("redis addr: %s", redisAddr)
 	redisClient := pkgUtil.InitRedisDB(redisAddr)
 
 	grpcclient.RegisterBookRoutes(api, bookGrpcConn, authorGrpcConn, categoryGrpcConn, userBrService, cfg.JwtSecret, userService, redisClient)

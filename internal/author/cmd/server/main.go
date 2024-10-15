@@ -28,7 +28,6 @@ func main() {
 
 	// service implementation
 	postgreUrl := fmt.Sprintf("postgresql://%s:%s@%s:%s/%s?sslmode=disable", cfg.DbUser, cfg.DbPassword, cfg.DbHost, cfg.DbPort, cfg.DbName)
-	log.Infof("connecting to database: %s", postgreUrl)
 	db, err := pkgUtil.InitSqlDB(postgreUrl)
 	if err != nil {
 		log.Fatalf("failed to connect to database: %v", err)

@@ -26,7 +26,6 @@ func main() {
 		log.Fatalf("failed to listen: %v", err)
 	}
 	postgreUrl := fmt.Sprintf("postgresql://%s:%s@%s:%s/%s?sslmode=disable", cfg.DbUser, cfg.DbPassword, cfg.DbHost, cfg.DbPort, cfg.DbName)
-	log.Infof("connecting to database: %s", postgreUrl)
 	db, err := util.InitSqlDB(postgreUrl)
 
 	if err != nil {
