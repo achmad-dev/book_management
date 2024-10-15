@@ -1,0 +1,197 @@
+services:
+  userPostgredb:
+    image: postgres:15
+    container_name: userPostgredb
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ../../sql/user.sql:/docker-entrypoint-initdb.d/init.sql
+      - userPostgredb:/var/lib/postgresql/data
+    networks:
+      - app
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  authorPostgredb:
+    image: postgres:15
+    container_name: authorPostgredb
+    environment:
+      POSTGRES_USER: author
+      POSTGRES_PASSWORD: author
+      POSTGRES_DB: author_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - ../../sql/author.sql:/docker-entrypoint-initdb.d/init-author.sql
+      - authorPostgredb:/var/lib/postgresql/data
+    networks:
+      - app
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U author -d author_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  bookPostgredb:
+    image: postgres:15
+    container_name: bookPostgredb
+    environment:
+      POSTGRES_USER: book
+      POSTGRES_PASSWORD: book
+      POSTGRES_DB: book
+    ports:
+      - "5434:5432"
+    volumes:
+      - ../../sql/book.sql:/docker-entrypoint-initdb.d/init-book.sql
+      - bookPostgredb:/var/lib/postgresql/data
+    networks:
+      - app
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U book -d book"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  categoryPostgredb:
+    image: postgres:15
+    container_name: categoryPostgredb
+    environment:
+      POSTGRES_USER: category
+      POSTGRES_PASSWORD: category
+      POSTGRES_DB: category
+    ports:
+      - "5435:5432"
+    volumes:
+      - ../../sql/category.sql:/docker-entrypoint-initdb.d/init-category.sql
+      - categoryPostgredb:/var/lib/postgresql/data
+    networks:
+      - app
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U category -d category"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  redisUserDb:
+     image: redis:latest
+     ports:
+       - 6379:6378
+    #  command: ["redis-server", "--bind", "0.0.0.0", "--port", "6379"]
+     networks:
+       - app
+     healthcheck:
+       test: ["CMD", "redis-cli", "ping"]
+       interval: 5s
+       timeout: 3s
+       retries: 5
+       start_period: 10s
+  
+  userService:
+    image: remahanrembulan/book-management-user:0.0.1
+    container_name: userService
+    environment:
+      PORT: 3000
+      DB_HOST: userPostgredb
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: postgres
+      REDIS_HOST: redisUserDb
+      REDIS_PORT: 6378
+      REDIS_PASSWORD: ""
+      REDIS_DB: 0
+      AUTHOR_SERVICE_HOST: authorService:4040
+      CATEGORY_SERVICE_HOST: categoryService:4041
+      BOOK_SERVICE_HOST: bookService:4042
+    depends_on:
+      userPostgredb:
+        condition: service_healthy
+      redisUserDb:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    links:
+      - redisUserDb
+    networks:
+      - app
+    # restart: always
+
+  authorService:
+    image: remahanrembulan/book-management-author:0.0.1
+    container_name: authorService
+    environment:
+      PORT: 4040
+      DB_HOST: authorPostgredb
+      DB_PORT: 5432
+      DB_USER: author
+      DB_PASSWORD: author
+      DB_NAME: author_db
+    ports:
+      - "4040:4040"
+    depends_on:
+      authorPostgredb:
+        condition: service_healthy
+    networks:
+      - app
+    # restart: always
+
+  bookService:
+    image: remahanrembulan/book-management-book:0.0.1
+    container_name: bookService
+    environment:
+      PORT: 4042
+      DB_HOST: bookPostgredb
+      DB_PORT: 5432
+      DB_USER: book
+      DB_PASSWORD: book
+      DB_NAME: book
+    ports:
+      - "4042:4042"
+    depends_on:
+      bookPostgredb:
+        condition: service_healthy
+    networks:
+      - app
+    # restart: always
+
+  categoryService:
+    image: remahanrembulan/book-management-category:0.0.1
+    container_name: categoryService
+    environment:
+      PORT: 4041
+      DB_HOST: categoryPostgredb
+      DB_PORT: 5432
+      DB_USER: category
+      DB_PASSWORD: category
+      DB_NAME: category
+    ports:
+      - "4041:4041"
+    depends_on:
+      categoryPostgredb:
+        condition: service_healthy
+    networks:
+      - app
+    # restart: always
+
+networks:
+  app:
+    name: app
+    driver: bridge
+
+volumes:
+  userPostgredb:
+  authorPostgredb:
+  bookPostgredb:
+  categoryPostgredb:
+  redisUserDb:

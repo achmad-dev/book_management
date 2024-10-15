@@ -1,0 +1,128 @@
+syntax = "proto3";
+
+package genproto;
+
+option go_package = "github.com/achmad-dev/internal/pkg/genproto";
+
+
+service BookService {
+    rpc GetBook (GetBookRequest) returns (GetBookResponse);
+    rpc GetBookByTitle (GetBookByTitleRequest) returns (GetBookByTitleResponse);
+    rpc GetBooksByAuthorName (GetBooksByAuthorNameRequest) returns (GetBooksByAuthorNameResponse);
+    rpc GetPopularBooksByCategory (GetPopularBooksByCategoryRequest) returns (GetPopularBooksByCategoryResponse);
+    rpc BorrowBook (BorrowBookRequest) returns (BorrowBookResponse);
+    rpc ReturnBook (ReturnBookRequest) returns (ReturnBookResponse);
+    rpc CreateBook (CreateBookRequest) returns (CreateBookResponse);
+    rpc UpdateBook (UpdateBookRequest) returns (UpdateBookResponse);
+    rpc DeleteBook (DeleteBookRequest) returns (DeleteBookResponse);
+    rpc ListBooks (ListBooksRequest) returns (ListBooksResponse);
+}
+
+message Book {
+    string id = 1;
+    string author_id = 2;
+    string category_id = 3;
+    string title = 4;
+    // author name
+    string author = 5;
+    // category name
+    string category = 6;
+    int32 stock = 7;
+    int32 borrowed = 8;
+    bool is_popular = 9;
+}
+
+message GetBookRequest {
+    string id = 1;
+}
+
+message GetBookResponse {
+    Book book = 1;
+}
+
+message GetBookByTitleRequest {
+    string title = 1;
+}
+
+message GetBookByTitleResponse {
+    Book book = 1;
+    repeated Book recommended_books = 2;
+}
+
+message GetBooksByAuthorNameRequest {
+    string author = 1;
+}
+
+message GetBooksByAuthorNameResponse {
+    repeated Book books = 1;
+}
+
+message GetPopularBooksByCategoryRequest {
+    string category = 1;
+}
+
+message GetPopularBooksByCategoryResponse {
+    repeated Book books = 1;
+}
+
+message BorrowBookRequest {
+    string id = 1;
+    int32 quantity = 2;
+}
+
+message BorrowBookResponse {
+    Book book = 1;
+}
+
+message ReturnBookRequest {
+    string id = 1;
+    int32 quantity = 2;
+}
+
+message ReturnBookResponse {
+    Book book = 1;
+}
+
+message CreateBookRequest {
+    string author_id = 1;
+    string category_id = 2;
+    string title = 3;
+    string author = 4;
+    string category = 5;
+    int32 stock = 6;
+    int32 borrowed = 7;
+    bool is_popular = 8;
+}
+
+message CreateBookResponse {
+    Book book = 1;
+}
+
+message UpdateBookRequest {
+    string id = 1;
+    string title = 2;
+    string author = 3;
+    string category = 4;
+    int32 sum = 5;
+    int32 stock = 6;
+    int32 borrowed = 7;
+    bool is_popular = 8;
+}
+
+message UpdateBookResponse {
+    Book book = 1;
+}
+
+message DeleteBookRequest {
+    string id = 1;
+}
+
+message DeleteBookResponse {
+    bool success = 1;
+}
+
+message ListBooksRequest {}
+
+message ListBooksResponse {
+    repeated Book books = 1;
+}

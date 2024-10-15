@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+package genproto;
+
+option go_package = "github.com/achmad-dev/internal/pkg/genproto";
+
+service AuthorService {
+    rpc GetAuthor(GetAuthorRequest) returns (GetAuthorResponse);
+    rpc GetAuthorByName(GetAuthorByNameRequest) returns (GetAuthorByNameResponse);
+    rpc CreateAuthor(CreateAuthorRequest) returns (CreateAuthorResponse);
+    rpc UpdateAuthor(UpdateAuthorRequest) returns (UpdateAuthorResponse);
+    rpc DeleteAuthor(DeleteAuthorRequest) returns (DeleteAuthorResponse);
+    rpc DeleteAuthorByName(DeleteAuthorByNameRequest) returns (DeleteAuthorByNameResponse);
+    rpc ListAuthors(ListAuthorsRequest) returns (ListAuthorsResponse);
+}
+
+message Author {
+    string id = 1;
+    string name = 2;
+}
+
+message GetAuthorRequest {
+    string id = 1;
+}
+
+message GetAuthorResponse {
+    Author author = 1;
+}
+
+message GetAuthorByNameRequest {
+    string name = 1;
+}
+
+message GetAuthorByNameResponse {
+    Author author = 1;
+}
+
+message CreateAuthorRequest {
+    string name = 1;
+}
+
+message CreateAuthorResponse {
+    Author author = 1;
+}
+
+message UpdateAuthorRequest {
+    string id = 1;
+    string name = 2;
+}
+
+message UpdateAuthorResponse {
+    Author author = 1;
+}
+
+message DeleteAuthorRequest {
+    string id = 1;
+}
+
+message DeleteAuthorResponse {
+    string message = 1;
+}
+
+message DeleteAuthorByNameRequest {
+    string name = 1;
+}
+
+message DeleteAuthorByNameResponse {
+    string message = 1;
+}
+
+message ListAuthorsRequest {
+}
+
+message ListAuthorsResponse {
+    repeated Author authors = 1;
+}

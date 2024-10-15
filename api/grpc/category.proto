@@ -1,0 +1,90 @@
+syntax = "proto3";
+
+package genproto;
+
+option go_package = "github.com/achmad-dev/internal/pkg/genproto";
+
+
+// The category service definition.
+service CategoryService {
+    // Create a new category
+    rpc CreateCategory (CreateCategoryRequest) returns (CreateCategoryResponse);
+
+    // Get a category by ID
+    rpc GetCategory (GetCategoryRequest) returns (GetCategoryResponse);
+
+    // get category by name
+    rpc GetCategoryByName (GetCategoryByNameRequest) returns (GetCategoryByNameResponse);
+
+    // Update a category
+    rpc UpdateCategory (UpdateCategoryRequest) returns (UpdateCategoryResponse);
+
+    // Delete a category
+    rpc DeleteCategory (DeleteCategoryRequest) returns (DeleteCategoryResponse);
+
+    // List all categories
+    rpc ListCategories (ListCategoriesRequest) returns (ListCategoriesResponse);
+}
+
+// The request message containing the category details.
+message CreateCategoryRequest {
+    string name = 1;
+}
+
+// The response message containing the created category details.
+message CreateCategoryResponse {
+    Category category = 1;
+}
+
+// The request message for getting a category by ID.
+message GetCategoryRequest {
+    string id = 1;
+}
+
+// The response message containing the category details.
+message GetCategoryResponse {
+    Category category = 1;
+}
+
+message GetCategoryByNameRequest {
+    string name = 1;
+}
+
+message GetCategoryByNameResponse {
+    Category category = 1;
+}
+
+// The request message for updating a category.
+message UpdateCategoryRequest {
+    string id = 1;
+    string name = 2;
+}
+
+// The response message containing the updated category details.
+message UpdateCategoryResponse {
+    Category category = 1;
+}
+
+// The request message for deleting a category.
+message DeleteCategoryRequest {
+    string id = 1;
+}
+
+// The response message for deleting a category.
+message DeleteCategoryResponse {
+    bool success = 1;
+}
+
+// The request message for listing all categories.
+message ListCategoriesRequest {}
+
+// The response message containing the list of categories.
+message ListCategoriesResponse {
+    repeated Category categories = 1;
+}
+
+// The category message containing the category details.
+message Category {
+    string id = 1;
+    string name = 2;
+}

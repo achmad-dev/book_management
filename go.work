@@ -1,0 +1,10 @@
+go 1.23.0
+
+use (
+    ./internal/author
+    ./internal/book
+    ./internal/category
+    ./internal/user
+    ./internal/pkg
+    ./integration_test
+)
