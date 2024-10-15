@@ -4,6 +4,27 @@
 
 This project is a Book Management System designed with a microservice architecture. It allows users to manage books, authors, stock, and categories. The system also supports user authentication and authorization, ensuring that only users with the admin role can perform management tasks.
 
+## Project structure
+```
+## Project structure
+
+```
+```
+- `internal/`: Application code
+    - `user/`: User service implementations
+    - `book/`: Book service implementations
+    - `category/`: Category service implementations
+    - `author/`: Author service implementations
+    - `pkg/`: global utility implementation
+- `api/`: API definitions
+    - `openapi/`: OpenAPI specifications
+    - `postman/`: Postman collections
+    - `grpc/`: gRPC proto files
+- `scripts/`: Utility scripts
+- `deployment/`: Deployment configurations
+    - `docker-compose/`: Docker Compose files
+```
+
 ## Prerequisites
 
 - Go
