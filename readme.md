@@ -71,8 +71,8 @@ This command will start all the necessary services in detached mode.
 
 - **Signup**: `POST /user/signup`
 - **Signin**: `POST /user/signin`
-- **Signup Admin**: `POST /user/signup-admin`
-- **Signin Admin**: `POST /user/signin-admin`
+- **Signup Admin(set role in body payload to admin)**: `POST /user/signup`
+- **Signin Admin**: `POST /user/signin`
 
 ### Author
 
@@ -98,3 +98,7 @@ This command will start all the necessary services in detached mode.
 - **List Categories**: `GET /category`
 - **Delete Category**: `DELETE /category/{id}`
 - **Update Category**: `PUT /category/{id}`
+
+See the api definition for more clarity
+- postman (recommended)
+- openapi
