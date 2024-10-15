@@ -2,10 +2,10 @@
 
 # Define image names and tags
 IMAGES=(
-    "remahanrembulan/book-management-user:0.0.1"
-    "remahanrembulan/book-management-book:0.0.1"
-    "remahanrembulan/book-management-category:0.0.1"
-    "remahanrembulan/book-management-author:0.0.1"
+    "remahanrembulan/book-management-user:0.0.2"
+    "remahanrembulan/book-management-book:0.0.2"
+    "remahanrembulan/book-management-category:0.0.2"
+    "remahanrembulan/book-management-author:0.0.2"
 )
 
 # Loop through the images and push each one

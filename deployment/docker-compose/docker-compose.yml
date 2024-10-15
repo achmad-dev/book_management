@@ -98,7 +98,7 @@ services:
        start_period: 10s
   
   userService:
-    image: remahanrembulan/book-management-user:0.0.1
+    image: remahanrembulan/book-management-user:0.0.2
     container_name: userService
     environment:
       PORT: 3000
@@ -128,7 +128,7 @@ services:
     # restart: always
 
   authorService:
-    image: remahanrembulan/book-management-author:0.0.1
+    image: remahanrembulan/book-management-author:0.0.2
     container_name: authorService
     environment:
       PORT: 4040
@@ -147,7 +147,7 @@ services:
     # restart: always
 
   bookService:
-    image: remahanrembulan/book-management-book:0.0.1
+    image: remahanrembulan/book-management-book:0.0.2
     container_name: bookService
     environment:
       PORT: 4042
@@ -166,7 +166,7 @@ services:
     # restart: always
 
   categoryService:
-    image: remahanrembulan/book-management-category:0.0.1
+    image: remahanrembulan/book-management-category:0.0.2
     container_name: categoryService
     environment:
       PORT: 4041

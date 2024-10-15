@@ -201,6 +201,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BooksResponse'
+  /v1/book/title/{title}:
+    get:
+      summary: Get(search) book by title
+      operationId: getBookByTitle
+      parameters:
+        - in: path
+          name: title
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Book details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BooksResponse'
   /v1/category:
     post:
       summary: Create a new category

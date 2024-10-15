@@ -562,7 +562,7 @@
 				"bearer": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxvbGR6emlsbGEiLCJleHAiOjE3MjkyMzY3Mjd9.uQqDcZ0c4nKmjB23Io2846O6zVhFGOJsbjpDPAPSY6Y",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxvbGR6emlsbGEiLCJleHAiOjE3MjkyODQ0NjR9.JhOHNxm-JU2Mh-mRvK6suEUtzbcrkYtLWbPiexB8X0M",
 						"type": "string"
 					}
 				]
@@ -598,7 +598,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"author_id\": \"bbd39f5c-6bae-4db9-aaf5-f25c156d52d4\",\n    \"category_id\": \"0abf2f3e-b2a3-4e3e-a1e7-b2db02a64f8f\",\n    \"title\": \"Karaoke vtuber3\",\n    \"stock\": 300\n}",
+							"raw": "{\n    \"author_id\": \"d27b1433-adba-4fbe-b8f3-7679134afdd3\",\n    \"category_id\": \"c27efda5-4210-49aa-b109-d82af7167059\",\n    \"title\": \"Karaoke-vtuber3\",\n    \"stock\": 300\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1013,6 +1013,28 @@
 							"body": "{\n    \"books\": [\n        {\n            \"id\": \"3f6e37be-56ff-435f-84bd-f2dc0b89ef9c\",\n            \"user_id\": \"bd3c0e04-80c8-431e-ba5b-add5ade6bed3\",\n            \"book_title\": \"Karaoke vtuber3\",\n            \"quantity\": 40,\n            \"created_at\": \"2024-10-15T08:53:00.356648Z\",\n            \"updated_at\": \"2024-10-15T08:53:03.657797Z\"\n        }\n    ]\n}"
 						}
 					]
+				},
+				{
+					"name": "Get book by title",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/v1/book/title/Karaoke-vtuber3",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"book",
+								"title",
+								"Karaoke-vtuber3"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"auth": {
@@ -1020,7 +1042,7 @@
 				"bearer": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdvZHppbGxhIiwiZXhwIjoxNzI5MjM5NTUzfQ.yHoqzB3p1FImQirDBegcPEMckyqMjrCFzWGhDcie4CA",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxvbGR6emlsbGEiLCJleHAiOjE3MjkyODQ0NjR9.JhOHNxm-JU2Mh-mRvK6suEUtzbcrkYtLWbPiexB8X0M",
 						"type": "string"
 					}
 				]
@@ -1056,7 +1078,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"religion\"\n}",
+							"raw": "{\n    \"name\": \"sci-fi\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1257,7 +1279,7 @@
 				"bearer": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxvbGR6emlsbGEiLCJleHAiOjE3MjkyMzY3Mjd9.uQqDcZ0c4nKmjB23Io2846O6zVhFGOJsbjpDPAPSY6Y",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxvbGR6emlsbGEiLCJleHAiOjE3MjkyODQ0NjR9.JhOHNxm-JU2Mh-mRvK6suEUtzbcrkYtLWbPiexB8X0M",
 						"type": "string"
 					}
 				]

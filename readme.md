@@ -88,8 +88,9 @@ This command will start all the necessary services in detached mode.
 - **Borrow Book**: `POST /book/borrow`
 - **Return Book**: `POST /book/return`
 - **Delete Book**: `DELETE /book/{id}`
-- **List Popular Books by Category**: `GET /book/popular`
+- **List Popular Books by Category (recommendation based on popularity, i.e., books borrowed many times)**: `GET /book/popular`
 - **List User Borrowed Books**: `GET /book/user`
+- **Search book by title**: `Get /book/title/{title}`
 
 ### Category
 
